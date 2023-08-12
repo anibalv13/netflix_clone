@@ -123,7 +123,7 @@ class _InitialPageState extends State<InitialPage> {
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 229, 9, 20),
-                  minimumSize: Size(MediaQuery.of(context).size.width,
+                  minimumSize: Size(MediaQuery.of(context).size.width - 20,
                       50), // Tamaño mínimo del botón
                   padding:
                       const EdgeInsets.all(10), // Espaciado interno del botón

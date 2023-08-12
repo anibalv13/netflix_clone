@@ -5,18 +5,16 @@ class ScreenFour extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return Stack(children: [
       Image.asset(
         'assets/images/Screen_4.jpg',
-        width: width,
-        height: height,
+        width: double.infinity,
+        height: double.infinity,
         fit: BoxFit.cover,
       ),
       Container(
-        width: width,
-        height: height,
+        width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Colors.black,
