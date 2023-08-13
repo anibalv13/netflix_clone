@@ -34,8 +34,8 @@ class _InitialPageState extends State<InitialPage> {
   }
 
   Widget _buildPage(int index) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    /*  final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height; */
     switch (index) {
       case 0:
         return const ScreenOne();
@@ -77,10 +77,18 @@ class _InitialPageState extends State<InitialPage> {
                   fontSize: 18,
                 ),
               )),
-          const Icon(
-            Icons.more_vert,
-            color: Colors.grey,
-          )
+          PopupMenuButton(
+              /* padding:
+                  const EdgeInsets.only(right: 0, top: 0, bottom: 0, left: 0), */
+              constraints: const BoxConstraints.expand(width: 230, height: 110),
+              icon: const Icon(
+                Icons.more_vert,
+                color: Colors.grey,
+              ),
+              itemBuilder: (context) => [
+                    const PopupMenuItem(value: 1, child: Text('FAQs')),
+                    const PopupMenuItem(value: 2, child: Text('HELP'))
+                  ])
         ],
         backgroundColor: Colors.transparent,
         elevation: 0,
