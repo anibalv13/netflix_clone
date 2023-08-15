@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
-class ScreenFour extends StatelessWidget {
-  const ScreenFour({super.key});
+class ScreenPresentation extends StatelessWidget {
+  final String imagePath;
+  final String title;
+  final String subtitle;
+  const ScreenPresentation(
+      {super.key,
+      required this.imagePath,
+      required this.subtitle,
+      required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
       Image.asset(
-        'assets/images/Screen_4.jpg',
+        imagePath,
         width: double.infinity,
         height: double.infinity,
         fit: BoxFit.cover,
@@ -24,7 +31,7 @@ class ScreenFour extends StatelessWidget {
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
       ),
-      const Positioned(
+      Positioned(
         bottom: 120,
         left: 0,
         right: 0,
@@ -33,9 +40,9 @@ class ScreenFour extends StatelessWidget {
             width: 350,
             child: Center(
               child: Text(
-                'Watch everywhere',
+                title,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   color: Colors.white,
                   fontSize: 42,
@@ -45,7 +52,7 @@ class ScreenFour extends StatelessWidget {
           ),
         ),
       ),
-      const Positioned(
+      Positioned(
         bottom: 50,
         left: 0,
         right: 0,
@@ -54,9 +61,9 @@ class ScreenFour extends StatelessWidget {
             width: 300,
             child: Center(
               child: Text(
-                'Stream on your phone, tablet, laptop, TV and more.',
+                subtitle,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),

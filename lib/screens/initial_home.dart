@@ -1,9 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/screens/initial_screens/screen_four.dart';
-import 'package:netflix_clone/screens/initial_screens/screen_one.dart';
-import 'package:netflix_clone/screens/initial_screens/screen_three.dart';
-import 'package:netflix_clone/screens/initial_screens/screen_two.dart';
+import 'package:netflix_clone/screens/initial_screens/screen_presentation.dart';
 
 class InitialPage extends StatefulWidget {
   const InitialPage({super.key});
@@ -34,17 +31,31 @@ class _InitialPageState extends State<InitialPage> {
   }
 
   Widget _buildPage(int index) {
-    /*  final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height; */
     switch (index) {
       case 0:
-        return const ScreenOne();
+        return const ScreenPresentation(
+          imagePath: 'assets/images/background-image.jpg',
+          title: 'Unlimited films, TV programmes & more.',
+          subtitle: 'Watch anywhere. Cancel at any time.',
+        );
       case 1:
-        return const ScreenTwo();
+        return const ScreenPresentation(
+          imagePath: 'assets/images/screen_2.jpg',
+          title: 'Download and watch offline',
+          subtitle: 'Always have something to watch offline.',
+        );
       case 2:
-        return const ScreenThree();
+        return const ScreenPresentation(
+          imagePath: 'assets/images/screee_3.jpeg',
+          title: 'No annoying contracts',
+          subtitle: 'Join today, cancel atany time',
+        );
       case 3:
-        return const ScreenFour();
+        return const ScreenPresentation(
+          imagePath: 'assets/images/Screen_4.jpg',
+          title: 'Watch everywhere',
+          subtitle: 'Stream on your phone, tablet, laptop, TV and more.',
+        );
       default:
         return Container();
     }
@@ -54,6 +65,7 @@ class _InitialPageState extends State<InitialPage> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
