@@ -83,7 +83,7 @@ class _InitialPageState extends State<InitialPage> {
                   ),
                 )),
             TextButton(
-                onPressed: () {},
+                onPressed: () => Navigator.pushNamed(context, ROUTE_SIGNIN),
                 child: Text(
                   'sign in'.toUpperCase(),
                   style: const TextStyle(
