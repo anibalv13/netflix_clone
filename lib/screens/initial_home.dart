@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/commons/routes.dart';
 import 'package:netflix_clone/screens/initial_screens/screen_presentation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InitialPage extends StatefulWidget {
   const InitialPage({super.key});
@@ -14,6 +15,8 @@ class _InitialPageState extends State<InitialPage> {
   final PageController _pageController = PageController();
 
   double _currentPage = 0;
+  final Uri _url = Uri.parse(
+      'https://help.netflix.com/legal/privacy?netflixsource=android&fromApp=true');
 
   @override
   void initState() {
@@ -31,13 +34,19 @@ class _InitialPageState extends State<InitialPage> {
     super.dispose();
   }
 
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+
   Widget _buildPage(int index) {
     switch (index) {
       case 0:
         return const ScreenPresentation(
           imagePath: 'assets/images/background-image.jpg',
-          title: 'Unlimited films, TV programmes & more.',
-          subtitle: 'Watch anywhere. Cancel at any time.',
+          title: 'Unlimited movies, TV shows & more.',
+          subtitle: 'Watch anywhere. Cancel  anytime.',
         );
       case 1:
         return const ScreenPresentation(
@@ -49,7 +58,7 @@ class _InitialPageState extends State<InitialPage> {
         return const ScreenPresentation(
           imagePath: 'assets/images/screee_3.jpeg',
           title: 'No annoying contracts',
-          subtitle: 'Join today, cancel atany time',
+          subtitle: 'Join today, cancel anytime',
         );
       case 3:
         return const ScreenPresentation(
@@ -74,7 +83,7 @@ class _InitialPageState extends State<InitialPage> {
           leading: Image.asset('assets/icons/icon.png'),
           actions: [
             TextButton(
-                onPressed: () {},
+                onPressed: _launchUrl,
                 child: Text(
                   'Privacy'.toUpperCase(),
                   style: const TextStyle(
@@ -132,15 +141,6 @@ class _InitialPageState extends State<InitialPage> {
                   },
                 ),
               ),
-              DotsIndicator(
-                dotsCount: 4,
-                position: _currentPage.round(),
-                decorator: const DotsDecorator(
-                    size: Size.square(9.0),
-                    activeSize: Size(18.0, 9.0),
-                    activeShape: CircleBorder(),
-                    activeColor: Colors.white),
-              ),
               const SizedBox(height: 20),
               ElevatedButton(
                   onPressed: () => Navigator.pushNamed(context, ROUTE_AUTH),
@@ -163,6 +163,20 @@ class _InitialPageState extends State<InitialPage> {
                   )),
               const SizedBox(height: 20),
             ],
+          ),
+          Positioned(
+            bottom: 100,
+            left: 0,
+            right: 0,
+            child: DotsIndicator(
+              dotsCount: 4,
+              position: _currentPage.round(),
+              decorator: const DotsDecorator(
+                  size: Size.square(9.0),
+                  activeSize: Size(18.0, 9.0),
+                  activeShape: CircleBorder(),
+                  activeColor: Colors.white),
+            ),
           ),
         ]),
       ),

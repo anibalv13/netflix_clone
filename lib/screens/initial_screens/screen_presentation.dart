@@ -21,7 +21,7 @@ class ScreenPresentation extends StatelessWidget {
       ),
       Container(
         width: double.infinity,
-        height: double.infinity,
+        height: 1000,
         decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Colors.black,
@@ -53,7 +53,7 @@ class ScreenPresentation extends StatelessWidget {
         ),
       ),
       Positioned(
-        bottom: 50,
+        bottom: 70,
         left: 0,
         right: 0,
         child: Center(
