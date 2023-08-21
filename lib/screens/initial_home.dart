@@ -76,6 +76,49 @@ class _InitialPageState extends State<InitialPage> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
+    bottomSheet() {
+      showModalBottomSheet(
+          context: context,
+          builder: (builder) {
+            return Stack(
+              children: [
+                Positioned(
+                    right: 5,
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.close))),
+                const Column(
+                  children: [
+                    SizedBox(
+                      height: 35,
+                    ),
+                    Text(
+                      'Frequently Asked \n Questions',
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.abc),
+                      title: Text('data'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.abc),
+                      title: Text('data'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.abc),
+                      title: Text('data'),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          });
+    }
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -100,15 +143,20 @@ class _InitialPageState extends State<InitialPage> {
                 ),
               )),
           PopupMenuButton(
-              /* padding:
-                  const EdgeInsets.only(right: 0, top: 0, bottom: 0, left: 0), */
               constraints: const BoxConstraints.expand(width: 230, height: 110),
               icon: const Icon(
                 Icons.more_vert,
                 color: Colors.grey,
               ),
               itemBuilder: (context) => [
-                    const PopupMenuItem(value: 1, child: Text('FAQs')),
+                    PopupMenuItem(
+                        value: 1,
+                        child: GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                              bottomSheet();
+                            },
+                            child: const Text('FAQs'))),
                     const PopupMenuItem(value: 2, child: Text('HELP'))
                   ])
         ],
